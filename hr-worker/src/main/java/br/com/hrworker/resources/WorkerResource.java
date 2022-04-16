@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping (value = "/v1/workers")
+@RequestMapping (value = "/v1/api/workers")
 @RequiredArgsConstructor (onConstructor = @__(@Autowired))
 public class WorkerResource {
 
