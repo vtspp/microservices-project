@@ -16,6 +16,8 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <spring-cloud.eureka.client.version>3.0.1</spring-cloud.eureka.client.version>
+        <spring-cloud.hytrix>2.2.10.RELEASE</spring-cloud.hytrix>
     </properties>
 
     <dependencyManagement>
@@ -44,7 +46,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>3.0.0</version>
+            <version>${spring-cloud.eureka.client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>${spring-cloud.hytrix}</version>
         </dependency>
 
         <dependency>
