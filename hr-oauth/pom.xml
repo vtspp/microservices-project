@@ -10,7 +10,7 @@
     </parent>
     <groupId>br.com.guithub.vtspp</groupId>
     <artifactId>hr-oauth</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>hr-oauth</name>
     <description>Authorization Server</description>
 
