@@ -1,11 +1,11 @@
 package br.com.hroauth.handler;
 
-import br.com.hroauth.exception.FindUserByEmailException;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class HandlerException {
 
-    @ExceptionHandler (value = FindUserByEmailException.class)
-    public ResponseEntity<ResponseHandler> responseHandler (FindUserByEmailException e, HttpServletRequest request) {
+    @ExceptionHandler (value = UsernameNotFoundException.class)
+    public ResponseEntity<ResponseHandler> responseHandler (UsernameNotFoundException e, HttpServletRequest request) {
         ResponseHandler response = ResponseHandler.builder()
                 .path(request.getRequestURI())
                 .instant(LocalDateTime.now())

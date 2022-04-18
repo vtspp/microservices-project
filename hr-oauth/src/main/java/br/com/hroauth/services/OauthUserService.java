@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 
@@ -16,22 +17,10 @@ public class OauthUserService {
 
     private static final Logger log = LoggerFactory.getLogger(OauthUserService.class);
 
-    private final OauthUserFeignClient userFeignClient;
+    private final OauthUserDetailsService userDetailsService;
 
     public User findByEmail (String email) {
-        User user = this.userFeignClient
-                .findByEmail(email)
-                .getBody();
-
-        userValid(user);
-        log.info("User {} localized by email {}", user.getName(), user.getEmail());
-        return user;
-    }
-
-    private void userValid (User user) {
-        if (user == null) {
-            log.error("Email not found");
-            throw new FindUserByEmailException("User not found");
-        }
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
+        return User.builder().build();
     }
 }
